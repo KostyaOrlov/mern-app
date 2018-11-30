@@ -9,8 +9,7 @@ import rootReducer from './reducers';
 const initialState = {};
 
 const middleware = [thunk];
-//const reduxDevTool = process.env.NODE_ENV !== 'production' ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : '';
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = (process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 const store = createStore(rootReducer, initialState, composeEnhancers(
     applyMiddleware(...middleware)
